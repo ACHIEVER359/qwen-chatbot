@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fc">
+  <meta name="description" content="A clean AI chat experience powered by Qwen2.5-0.5B-Instruct.">
+  <title>Qwen Chat — Pagewise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <a class="brand" href="/" aria-label="Qwen Chat home">
+        <span class="brand-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H17a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6.5A2.5 2.5 0 0 1 4 18.5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
+        <span>qwen<span class="brand-dot">.</span>chat</span>
+      </a>
+      <div class="side-label">YOUR WORKSPACE</div>
+      <button class="nav-link active"><span class="nav-glyph">✳</span> New conversation <span class="nav-key">⌘ K</span></button>
+      <button id="clear-chat" class="nav-link"><span class="nav-glyph">↻</span> Clear conversation</button>
+      <div class="sidebar-card">
+        <div class="card-icon">✦</div>
+        <strong>Small model. Big ideas.</strong>
+        <p>Ask questions, brainstorm, learn, or work through a problem one message at a time.</p>
+      </div>
+      <div class="sidebar-bottom">
+        <div class="privacy-mark">◈</div>
+        <div><strong>Session-based chat</strong><p>Your conversation is held in this browser tab and sent to the app when you chat.</p></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="crumb"><span>Workspace</span><i>/</i><strong>New conversation</strong></div>
+        <div class="model-pill"><span class="pulse"></span><span>Qwen2.5-0.5B-Instruct</span><span class="pill-separator">·</span><span>Local inference</span></div>
+      </header>
+      <section class="hero">
+        <div class="eyebrow"><span>✦</span> YOUR AI CONVERSATION SPACE</div>
+        <h1>What’s on your <span>mind today?</span></h1>
+        <p>A simple, thoughtful chatbot for questions, ideas, and everyday problem-solving.</p>
+      </section>
+
+      <section class="chat-shell">
+        <div class="chat-head">
+          <div><div class="section-label">CHAT SESSION</div><h2>Let's talk.</h2></div>
+          <button id="new-chat" class="quiet-button" title="Start a new conversation">＋ New chat</button>
+        </div>
+        <div id="welcome" class="welcome">
+          <div class="welcome-symbol"><span>✳</span></div>
+          <h3>Start with a question.</h3>
+          <p>Choose a prompt below or write your own. I'll use the recent conversation to keep context.</p>
+          <div class="prompt-grid">
+            <button class="prompt-card" data-prompt="Explain Python functions in simple words."><span class="prompt-icon violet">⌘</span><span><strong>Learn something</strong><small>Explain a concept simply</small></span><b>↗</b></button>
+            <button class="prompt-card" data-prompt="Give me three beginner-friendly AI project ideas and explain what each one does."><span class="prompt-icon blue">✧</span><span><strong>Explore ideas</strong><small>Brainstorm something new</small></span><b>↗</b></button>
+            <button class="prompt-card" data-prompt="Help me make a realistic plan to learn a new skill in 30 days."><span class="prompt-icon green">◷</span><span><strong>Make a plan</strong><small>Turn a goal into steps</small></span><b>↗</b></button>
+            <button class="prompt-card" data-prompt="Tell me a short, clever, funny story."><span class="prompt-icon amber">☼</span><span><strong>Take a break</strong><small>Try something fun</small></span><b>↗</b></button>
+          </div>
+        </div>
+        <div id="messages" class="messages hidden" aria-live="polite"></div>
+        <div class="composer-area">
+          <form id="chat-form" class="composer">
+            <textarea id="message-input" rows="1" maxlength="4000" placeholder="Message Qwen…" aria-label="Message Qwen"></textarea>
+            <div class="composer-actions">
+              <span class="composer-note"><span class="sparkle">✦</span> AI can make mistakes. Check important information.</span>
+              <button id="send-button" type="submit" aria-label="Send message"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12 20 4l-5 16-3-6z"/><path d="m12 14 8-10"/></svg></button>
+            </div>
+          </form>
+          <div class="input-hint"><span>Enter to send · Shift + Enter for a new line</span><span>Max 4,000 characters</span></div>
+        </div>
+      </section>
+      <footer><span>QWEN CHAT <i>·</i> POWERED BY QWEN2.5</span><span>Simple by design.</span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
